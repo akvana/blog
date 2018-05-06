@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block body %}
+    <div class="container">
+    {% for post in posts %}
+      <hr>
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="card"style="background-color:#dfd9d9;margin-bottom:15px">
+              {% if post.image %}
+                <img src="{{ post.image.url }}" class="img-responsive">
+              {% endif %}
+              <div class="card-body">
+
+                <h5 class="card-title">{{ post.title }} <small> {{post.publising_Date|timesince}} </small></h5>
+                <p class="card-text">{{ post.content|safe|linebreaks|truncatechars:20 }}</p>
+                <h4 <small> Yazar : {{post.user.get_full_name}} </small></h4>
+                <a href="{{post.get_absolute_url}}" class="btn btn-primary">Detay</a>
+                {% if request.user.is_authenticated %}
+                  <a href="{{post.get_update_url}}" class="btn btn-primary">Güncelle</a>
+                  <a href="{{post.get_delete_url}}" class="btn btn-danger">Sil</a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+    {% endfor %}
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-md-offset-5">
+        <div class="pagination">
+            <span class="step-links">
+              {% if posts.has_previous %}
+                  <a href="?sayfa=1">&laquo; İlk </a> |
+                  <a href="?sayfa={{ posts.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">Geri </a>
+                  {% endif %}
+
+                  <span class="current">
+                    Sayfa {{ posts.number }} - {{ posts.paginator.num_pages }}
+                  </span>
+
+                  {% if posts.has_next %}
+                    <a href="?sayfa={{ posts.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">İleri </a> |
+                    <a href="?sayfa={{ posts.paginator.num_pages }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">Son  &raquo;</a>
+                  {% endif %}
+            </span>
+        </div>
+      </div>
+    </div>
+
+
+  {% endblock %}

@@ -1,0 +1,22 @@
+
+{% extends 'base.html' %}
+{% block title %} Ana Sayfa - {{block.super}} {% endblock %}
+{% block body %}
+
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-3 col-sm-6 col-xs-12"style="background-color:red;height:50px;margin-bottom:15px;">SUTUN 1</div>
+        <div class="col-md-3 col-sm-6 col-xs-12"style="background-color:blue;height:50px;margin-bottom:15px;">SUTUN 2</div>
+        <div class="col-md-3 col-sm-6 col-xs-12"style="background-color:green;height:50px;margin-bottom:15px;">SUTUN 3</div>
+        <div class="col-md-3 col-sm-6 col-xs-12"style="background-color:yellow;height:50px;margin-bottom:15px;">SUTUN 4</div>
+        <div class="col-md-3 col-sm-6 col-xs-12"style="background-color:purple;height:50px;margin-bottom:15px;">SUTUN 5</div>
+        <div class="col-md-3 col-sm-6 col-xs-12"style="background-color:gray;height:50px;margin-bottom:15px;">SUTUN 6</div>
+        <div class="col-md-3 col-sm-6 col-xs-12"style="background-color:black;height:50px;margin-bottom:15px;">SUTUN 7</div>
+        <div class="col-md-3 col-sm-6 col-xs-12"style="background-color:white;height:50px;margin-bottom:15px;">SUTUN 8</div>
+      </div>
+    </div>
+    {% if request.user.is_authenticated %}
+      <h3> Hoş Geldin {{ request.user.get_full_name }} </h3>
+    {% endif %}
+{% endblock %}

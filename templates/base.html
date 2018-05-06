@@ -1,0 +1,28 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+  <script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+  <meta charset="utf-8" name="viewport" content="width=device-width, inital-scale=1"></meta>
+  <title>{% block title %}BASE{% endblock %}</title>
+  <link rel="stylesheet" href="{% static '/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static '/css/style.css' %}">
+
+
+</head>
+<a>
+    {% include 'header.html'  %}
+    {% include 'messages.html' %}
+    {% block body %}
+
+    {% endblock %}
+    <script src="{% static '/js/jquery.min.js' %}"></script>
+    <script src="{% static '/js/bootstrap.min.js' %}"></script>
+</body>
+
+
+
+
+</html>

@@ -1,0 +1,9 @@
+{% load crispy_forms_tags %}
+{% load recaptcha2 %}
+<form method="POST">
+  {% csrf_token %}
+  {{form|crispy}}
+
+  {% recaptcha_init 'en' %}
+  <input class="btn btn-primary" type="submit" value="Yorum Ekle"></input>
+</form>
